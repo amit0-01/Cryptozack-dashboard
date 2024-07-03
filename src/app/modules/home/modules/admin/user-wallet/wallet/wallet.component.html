@@ -1,0 +1,160 @@
+<!-- NGX LOADER -->
+<div class="ngxLoader" *ngIf="showLoader">
+    <ngx-ui-loader [hasProgressBar]="false"></ngx-ui-loader>
+</div>
+
+<div class="main_container">
+
+    <div class="flex pad-8 header">
+
+        <!-- HEADING -->
+        <div class="flex" style="align-items: center;">
+            <mat-icon class="back_arrow" (click)="backToUser()" matTooltip="Back To User">arrow_back</mat-icon>
+            <p class="heading">Wallet Details</p>
+        </div>
+
+        <div class="spacer"></div>
+
+    </div>
+
+    <div class="email_container" *ngIf="!userId">
+        <form [formGroup]="walletForm" class="pad-16">
+
+            <!-- EMAIL COLUMN -->
+            <mat-form-field appearance="outline" style="height: 60px;">
+                <mat-label>Enter User Email</mat-label>
+                <input matInput color="primary" [formControl]="controls.email">
+            </mat-form-field>
+
+        </form>
+
+        <!-- BUTTONS -->
+        <div class="btn">
+
+            <!-- GET WALLET DETAILS BUTTONS -->
+            <button mat-button class="buttons" matTooltip="Get User Wallet Details" (click)="findUserWithEmail()">
+                Get Wallet Details
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="details_container" *ngIf="userId">
+        <div class="about_user">
+            <img src="../../../../../../../assets/images/User.png" width="5%">
+
+            <div class="user">
+                <h5>{{userEmail?.firstName || "--"}} {{userEmail?.lastName || "--"}}</h5>
+                <p>{{userEmail?.email || "--"}}</p>
+            </div>
+            <div class="spacer"></div>
+
+            <!-- <button mat-button *ngIf="!transHistory" class="buttons" matTooltip="Show Transaction History"
+                (click)="transactionHistory()">
+                Transaction History
+            </button> -->
+
+        </div>
+    </div>
+
+    <div class="user_details" *ngIf="userId">
+
+        <div class="detail">
+            <p class="para_value">$ {{userData?.usdtAmount || "0"}}</p>
+            <p class="para_heading">Current Balance  </p>
+        </div>
+
+        <div class="detail">
+            <p class="para_value">$ {{totalDeposit || "0"}}</p>
+            <p class="para_heading">Total Deposit </p>
+        </div>
+
+        <div class="detail">
+            <p class="para_value">$ {{totalWithdrawal || "0"}}</p>
+            <p class="para_heading">Total Withdrawal </p>
+        </div>
+
+        <div class="detail">
+            <p class="para_value">$ {{refferalAmount || "0"}}</p>
+            <p class="para_heading">Rewards </p>
+        </div>
+
+    </div>
+
+    <div class="table_container" *ngIf="userId">
+        <div class="table_headings flex">
+
+            <h3>Transaction Details</h3>
+            <div class="spacer"></div>
+
+            <mat-form-field class="type_formField" appearance="outline">
+                <mat-label>Transaction Type</mat-label>
+                <mat-select disableRipple [(value)]="selectedDefaultValue" (selectionChange)="selectionChange($event)">
+                    <mat-option value="COMPANY_COMMISSION">FEE</mat-option>
+                    <mat-option value="WITHDRAWAL">WITHDRAWAL</mat-option>
+                    <mat-option value="DEPOSIT">DEPOSIT</mat-option>
+                    <mat-option value="REFERRAL">REWARDS</mat-option>
+                    <!-- <mat-option value="COMPANY_LOSS">COMPANY LOSS</mat-option>
+                    <mat-option value="COMPANY_PROFIT">COMPANY PROFIT</mat-option>
+                    <mat-option value="COMPANY_LOSS_RECOVER">COMPANY LOSSRE COVER</mat-option> -->
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+
+        <table class="dataTable" mat-table [dataSource]="dataSource">
+
+
+            <!-- AMOUNT COLUMN -->
+            <ng-container matColumnDef="amount">
+                <th mat-header-cell *matHeaderCellDef>Amount </th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.usdtAmount}} <span class="usdt">(USDT)</span>
+                </td>
+            </ng-container>
+
+            <!-- TRANSACTION TYPE COLUMN -->
+            <ng-container matColumnDef="type">
+                <th mat-header-cell *matHeaderCellDef>Transaction Type </th>
+                <td mat-cell *matCellDef="let element">
+                    <span *ngIf="element.transactionType == 'COMPANY_COMMISSION'"> FEE</span>
+                    <!-- <span *ngIf="element.transactionType == 'TRADE_PROFIT'">TRADE PROFIT</span> -->
+                    <span *ngIf="element.transactionType == 'DEPOSIT'">DEPOSIT</span>
+                    <span *ngIf="element.transactionType == 'REFERRAL'">REWARDS</span>
+                    <span *ngIf="element.transactionType == 'WITHDRAWAL'">WITHDRAWAL</span>
+
+
+                </td>
+            </ng-container>
+
+            <!-- DATE AND TIME COLUMN -->
+            <ng-container matColumnDef="createdAt">
+                <th mat-header-cell *matHeaderCellDef>Date & Time </th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.createdAt | date: 'MMMM dd, y , hh:mm:ss a'}}
+                </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="cursor-pointer"></tr>
+
+            <!-- ROW SHOWS WHEN THERE IS NO MATCHING DATA -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="3" class="pad-16" style="text-align: center;">No data matching the filter
+                </td>
+            </tr>
+
+        </table>
+
+        <!-- PAGINATION -->
+        <mat-paginator [length]="totalLength" class="pagination" [pageSizeOptions]="[5,10, 25, 50, 75, 100]"
+            pageSize="5" (page)="pageChange($event)">
+        </mat-paginator>
+
+    </div>
+
+
+
+</div>

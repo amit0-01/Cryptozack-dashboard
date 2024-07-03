@@ -1,0 +1,15 @@
+<div class="card-container">
+    <mat-card>
+        <div class="title">
+            {{title}}
+        </div>
+
+        <div class="icon flex" [ngClass]="{'green': IconColor=='green', 'yellow': IconColor=='yellow'}">
+            <mat-icon [color]="themeColor">{{icon}}</mat-icon>
+        </div>
+
+        <div class="count">
+            {{count}}
+        </div>
+    </mat-card>
+</div>

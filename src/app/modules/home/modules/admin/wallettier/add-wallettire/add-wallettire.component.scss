@@ -1,0 +1,23 @@
+.toolbar {
+    background-color: #1e88e5;
+    color: white;
+}
+
+.buttons {
+    border: 1px solid #CCCBCB;
+    width: auto;
+    border-radius: 3px;
+    background-color: #ffffff;
+    color: #635D5D;
+    font-weight: 600;
+    margin-right: 10px;
+    height: 36px;
+    float: right;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.buttons:hover {
+    border: 1px solid #1e88e5;
+    color: #1e88e5;
+}

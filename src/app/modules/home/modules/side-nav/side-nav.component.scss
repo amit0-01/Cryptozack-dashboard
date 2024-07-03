@@ -1,0 +1,59 @@
+body {
+  overflow: hidden;
+}
+
+.example-container {
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  height: 100%;
+  width: 100%;
+  -webkit-scrollbar: none;
+}
+
+.example-sidenav {
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  user-select: none;
+  width: 100%;
+  background-color: #1e88e5;
+}
+
+.mat-icon {
+  margin-right: 4px;
+}
+
+.parent {
+  color: white;
+
+  .full-width {
+    color: white;
+    overflow-x: hidden;
+
+  }
+}
+
+.submenu {
+  transform: scaleY(0);
+  transform-origin: top;
+  padding-left: 30px;
+  color: white;
+}
+
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.menu-button {
+  margin-top: 6px;
+  margin-left: 15px;
+}
+
+.example-toolbar {
+  margin: 0%;
+  padding: 0%;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}

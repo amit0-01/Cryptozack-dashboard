@@ -1,0 +1,71 @@
+<!-- NGX LOADER -->
+<div class="ngxLoader" *ngIf="showLoader">
+    <ngx-ui-loader [hasProgressBar]="false"></ngx-ui-loader>
+</div>
+
+<div class="toolbar">
+    <mat-toolbar class="toolbar">
+        <span *ngIf="!data">Add Wallet Tire</span>
+        <span *ngIf="data">Update Wallet Tire</span>
+        <div class="spacer"></div>
+        <mat-icon mat-dialog-close class="pointer" matTooltip="Close">close</mat-icon>
+    </mat-toolbar>
+</div>
+
+<form [formGroup]="walletTierForm" class="pad-16">
+
+    <!-- NAME COLUMN -->
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput color="primary" [formControl]="controls.name">
+    </mat-form-field>
+
+    <!-- MAX AMOUNT COLUMN -->
+    <mat-form-field>
+        <mat-label>Max Amount</mat-label>
+        <input matInput color="primary" [formControl]="controls.maxAmount" type="number">
+    </mat-form-field>
+
+    <!-- MIN AMOUNT COLUMN -->
+    <mat-form-field>
+        <mat-label>Min Amount</mat-label>
+        <input matInput color="primary" [formControl]="controls.minAmount" type="number">
+    </mat-form-field>
+
+    <!-- REQUIRED AMOUNT COLUMN -->
+    <mat-form-field>
+        <mat-label>Required Amount</mat-label>
+        <input matInput color="primary" [formControl]="controls.requiredAmount" type="number">
+    </mat-form-field>
+
+    <!-- DESCRIPTION COLUMN -->
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput color="primary" [formControl]="controls.description">
+    </mat-form-field>
+
+</form>
+
+<!-- BUTTONS -->
+<div class="btn pad-8">
+
+
+    <!-- ADD OR UPDATE BUTTON -->
+    <!-- <button mat-raised-button class="buttons" color="primary" [disabled]="walletTierForm.invalid" -->
+    <button *ngIf="!data" mat-raised-button class="buttons" color="primary" (click)="addWalletTier()">
+        <!-- {{data && data.employee ? 'Update Employee' : 'Add Employee'}} -->
+        Add Wallet Tire
+    </button>
+
+    <button *ngIf="data" mat-raised-button class="buttons" color="primary" (click)="updateWalletTier()">
+        Update Wallet Tire
+    </button>
+
+
+
+    <!-- CANCEL BUTTONS -->
+    <button mat-button class="buttons" mat-dialog-close>
+        Cancel
+    </button>
+
+</div>

@@ -1,0 +1,55 @@
+<div class="ngxLoader" *ngIf="showLoader">
+    <ngx-ui-loader [hasProgressBar]="false"></ngx-ui-loader>
+</div>
+
+
+<mat-drawer-container class="example-container drawer-opened" [class.hide]="showLoader">
+
+    <mat-drawer #drawer class="drawer mat-elevation-z1" mode="side" opened="true">
+        <mat-toolbar class="logo-header flex-column-centered">
+            <img src="../../../assets/images/Vector.png" width="20%">
+            <h4 style="color: white; margin-left: 10px;">Cryptozack</h4>
+        </mat-toolbar>
+
+        <div class="menu-main" autosize>
+            <app-side-nav #sidenav [menus]="menus" (click)="showSubmenu = !showSubmenu" mode="side"
+                opened="true"></app-side-nav>
+        </div>
+    </mat-drawer>
+
+
+    <mat-toolbar color="primary" class="example-toolbar">
+        <mat-icon class="toogleBtns pointer" *ngIf="!drawer.opened" (click)="drawer.toggle()">
+            menu
+        </mat-icon>
+        <mat-icon class="toogleBtns pointer" *ngIf="drawer.opened" (click)="drawer.toggle()">
+            menu
+        </mat-icon>
+
+        <div class="spacer"></div>
+
+        <p class="capital userName">{{userData?.admin.firstName}} {{userData?.admin.lastName || ''}}</p>
+
+
+        <div class="profile-menu">
+            <button mat-icon-button [matMenuTriggerFor]="menu" class="">
+                <mat-icon matTooltip="Logout" style="font-size: 25px;">account_circle</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="logout()">
+                    <mat-icon>logout</mat-icon> Logout
+                </button>
+            </mat-menu>
+        </div>
+    </mat-toolbar>
+
+
+    <div class="main contents">
+        <div class="dashboard"> 
+            <router-outlet></router-outlet>
+    </div>
+        
+ </div>
+
+
+</mat-drawer-container>

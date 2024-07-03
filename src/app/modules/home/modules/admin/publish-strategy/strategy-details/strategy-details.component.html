@@ -1,0 +1,52 @@
+<!-- 
+
+<div class="main flex-column-centered">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="buyThreshold">
+      <th mat-header-cell *matHeaderCellDef> Buy Threshold </th>
+      <td mat-cell *matCellDef="let element"> {{element.buyThreshold}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="initialInvestment">
+      <th mat-header-cell *matHeaderCellDef> Initial Investment </th>
+      <td mat-cell *matCellDef="let element"> {{element.initialInvestment}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="lotMultiplier">
+      <th mat-header-cell *matHeaderCellDef> Lot Multiplier </th>
+      <td mat-cell *matCellDef="let element"> {{element.lotMultiplier}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="maxPositions">
+      <th mat-header-cell *matHeaderCellDef> Max Positions </th>
+      <td mat-cell *matCellDef="let element"> {{element.maxPositions}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="profitThreshold">
+      <th mat-header-cell *matHeaderCellDef> Profit Threshold </th>
+      <td mat-cell *matCellDef="let element"> {{element.profitThreshold}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+</div> -->
+
+
+<div class="toolbar">
+  <mat-toolbar class="toolbar">
+    <span  style="text-transform: capitalize;">Strategy Details</span>
+    <div class="spacer"></div>
+    <mat-icon (click)="close()" class="pointer" matTooltip="Close">close</mat-icon>
+  </mat-toolbar>
+</div>  
+
+<ng-container>
+  <div *ngFor="let pair of keyValuePairs">
+    <ng-container *ngIf="pair.key !== 'autoMode'">
+      <div class="key-value-pair">{{ pair.key }}: {{ pair.value }}</div>
+    </ng-container>
+  </div>
+</ng-container>

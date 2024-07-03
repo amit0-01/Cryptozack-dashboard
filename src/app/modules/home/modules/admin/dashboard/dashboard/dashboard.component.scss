@@ -1,0 +1,119 @@
+.main_container {
+  padding: 0px 10px;
+}
+
+.rewenue {
+  line-height: 10px;
+  margin-left: 5px;
+
+  h1 {
+    margin: 0px;
+    color: green;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0px;
+    color: #687888;
+    font-weight: 500;
+  }
+}
+
+.usdtTotal {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.company_details {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 24.5% 24.5% 24.5% 24.5%;
+  gap: 8px;
+  border-radius: 5px;
+
+  .detail {
+    // margin-right: 10px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 5px;
+    padding: 15px;
+    border-radius: 4px;
+
+    .value_graph {
+      display: grid;
+      grid-template-columns: 60% 40%;
+
+      .value {
+        line-height: 10px;
+        margin-top: 35px;
+      }
+
+      .para {
+        font-size: 14px;
+        color: #687888;
+      }
+
+      .graph{
+        text-align: end;
+      }
+    }
+  }
+}
+
+.para_value {
+  font-size: 25px;
+  font-weight: 600;
+  margin: 0px;
+  color: rgba(51, 71, 91, 1);
+}
+
+.para_heading {
+  color: #687888;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0px;
+}
+
+.usdt {
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.company_rewenue_graph {
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 5px;
+  margin-top: 10px;
+}
+
+
+/* For tablets: */
+@media only screen and (max-width: 950px) {
+  .company_details {
+    display: grid;
+    grid-template-columns: 50% 49%;
+  }
+}
+
+
+/* For mobiles: */
+@media only screen and (max-width: 500px) {
+  .company_details {
+    display: block;
+
+    .detail {
+      margin-top: 15px;
+
+    }
+  }
+
+  .header {
+    display: none;
+  }
+
+  .rewenue {
+    margin-top: 15px;
+
+    h1 {
+      font-size: 23px;
+    }
+  }
+}

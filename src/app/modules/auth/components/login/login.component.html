@@ -1,0 +1,29 @@
+<div class="login-form pad-45 flex-column-centered">
+    <form [formGroup]="loginForm" >
+        <div class="pad-8">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput color="primary" [formControl]="controls.email">
+            </mat-form-field>
+        </div>
+        <div class="pad-8">
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput [formControl]="controls.password" type="password">
+            </mat-form-field>
+        </div>
+
+        <div class="btn flex-row-centered pad-8">
+            <button mat-raised-button class="primary-button" (click)="signIn()"  style="background-color:#67757c;">
+                Login
+            </button>
+
+            <mat-spinner color="accent" diameter="32" *ngIf="showLoader"></mat-spinner>
+        </div>
+    </form>
+
+</div>
+
+
+
+

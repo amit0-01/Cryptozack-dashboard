@@ -1,0 +1,23 @@
+.card-container {
+    width: 420px;
+    margin: auto;
+    margin-top: 90px;
+    // border: 1px solid #67757c;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 5px;
+
+    .mat-card {
+        margin-top: 64px;
+        width: 384px;
+        background-color: #67757c;
+        .auth-main {
+            .auth-container {
+                .logo-image {
+                    img {
+                        width: 120px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+<div *ngIf="menu">
+  <mat-list-item class="list-item" (click)="navigateToRoute()"
+    [class.highlight-menu]="shouldHighlightButton(menu.route)">
+    <span class="side_Btns">{{menu.displayName}}</span>
+  </mat-list-item>
+  <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="menu.children && menu.children.length ">
+
+
+    <ng-container *ngFor="let subMenu of menu.children">
+      <app-menu-list [menu]="subMenu"></app-menu-list>
+    </ng-container>
+
+  </div>
+</div>

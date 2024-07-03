@@ -1,0 +1,38 @@
+@import "../../../../vizitor-lighttheme.scss";
+$primary: map-get($vizitor-app-theme, primary);
+
+.card-container {
+    width: 208px;
+    position: relative;
+    // padding: 8px;
+    .title {
+        opacity: 0.7;
+    }
+    .icon {
+        justify-content: flex-end;
+        color: mat-color($primary);
+    }
+    .mat-card {
+        padding: 4px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .count {
+        font-weight: bold;
+    }
+}
+
+.green {
+    // mat-progress-bar .mat-progress-bar-buffer {
+    //     background: #27ae60 !important;
+    // }
+    .mat-icon {
+        color: #27ae60 !important;
+    }
+}
+
+.yellow {
+    .mat-icon {
+        color: #f39c12 !important;
+    }
+}

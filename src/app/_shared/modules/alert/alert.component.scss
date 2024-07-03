@@ -1,0 +1,26 @@
+
+.fs_20{
+    font-size: 25px;
+}
+
+.btn{
+justify-content: center;
+margin-bottom: 15px;
+}
+
+.buttons {
+    border: 1px solid #CCCBCB;
+    width: auto;
+    border-radius: 3px;
+    background-color: #ffffff;
+    color: #635D5D;
+    font-weight: 600;
+    margin-right: 10px;
+    height: 36px;
+    cursor: pointer;
+}
+
+.buttons:hover {
+    color: #1e88e5;
+    border: 1px solid #1e88e5;
+}

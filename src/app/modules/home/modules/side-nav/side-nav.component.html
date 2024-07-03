@@ -1,0 +1,9 @@
+<mat-sidenav-container class="example-container" autosize  #side>
+	
+	<mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
+		<mat-nav-list (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+			<app-menu-list *ngFor="let menu of menus" [menu]="menu" [isExpanded]="true" [showSubmenu]="true">
+			</app-menu-list>
+		</mat-nav-list>
+	</mat-sidenav>
+</mat-sidenav-container>

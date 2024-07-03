@@ -1,0 +1,31 @@
+.add-column {
+    height: 100vh;
+    width: 400px;
+    display: flex;
+    flex-direction: column
+}
+
+.btn {
+    display: flex;
+    justify-content: flex-end;
+    button {
+        display: flex;
+        align-items: center;
+        .mat-icon {
+            margin-right: 8px;
+        }
+    }
+}
+
+.column-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+// .add-column {
+
+// }
+.close{
+    float: right;
+}
+

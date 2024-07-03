@@ -1,0 +1,59 @@
+<!-- NGX LOADER -->
+<div class="ngxLoader" *ngIf="showLoader">
+    <ngx-ui-loader [hasProgressBar]="false"></ngx-ui-loader>
+</div>
+
+<div class="main_container">
+
+    <div class="flex pad-8 header">
+
+  <!-- HEADING -->
+  <mat-icon class="back_arrow" (click)="backToUser()" matTooltip="Back To User">arrow_back</mat-icon>
+  <p class="heading">Referrals</p>
+  <div class="spacer"></div>
+</div>
+    <!-- TABLE CONTAINER -->
+    <div style="margin-top: 10px;">
+        <table class="dataTable" mat-table [dataSource]="dataSource">
+
+              
+            <!-- TYPE -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.name || "--" }}
+                </td>
+            </ng-container>
+
+            <!-- PARAMS -->
+            <ng-container matColumnDef="email">
+                <th style="white-space: nowrap;" mat-header-cell *matHeaderCellDef>Email</th>
+                <td mat-cell *matCellDef="let element">
+              {{element.email}}
+                </td>
+            </ng-container>
+
+            <!--  TIME COLUMN -->
+            <ng-container matColumnDef="joined">
+                <th mat-header-cell *matHeaderCellDef>Date</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.joinedOn | date: 'MMM dd , y , hh:mm:ss a'}}
+                </td>
+            </ng-container>
+          
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns;  sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="cursor-pointer"></tr>
+
+            <!-- ROW SHOWS WHEN THERE IS NO MATCHING DATA -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4" class="pad-16" style="text-align: center;">No data Found
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+

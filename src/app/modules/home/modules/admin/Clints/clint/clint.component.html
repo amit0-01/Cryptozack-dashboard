@@ -1,0 +1,114 @@
+<!-- NGX LOADER -->
+<div class="ngxLoader" *ngIf="showLoader">
+    <ngx-ui-loader [hasProgressBar]="false"></ngx-ui-loader>
+</div>
+
+
+<div class="main_container">
+
+    <div class="flex pad-8 header">
+
+        <!-- HEADING -->
+        <p class="heading">Users</p>
+        <div class="spacer"></div>
+
+        <!-- SEARCH BOX -->
+        <div class="search">
+            <input class="searchInput" matInput placeholder="Search..." #input (keyup)="applyFilter($event)">
+            <mat-icon class="searchIcon">search</mat-icon>
+        </div>
+
+    </div>
+
+
+    <!-- TABLE CONTAINER -->
+    <table class="dataTable" mat-table [dataSource]="dataSource">
+
+        <!--  NAME COLUMN -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name </th>
+            <td mat-cell *matCellDef="let element" class="capital">
+                {{element.firstName}} {{element.lastName}}
+            </td>
+        </ng-container>
+
+        <!--  EMAIL COLUMN -->
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let element">
+                {{element.email || "--"}}
+            </td>
+        </ng-container>
+
+        <!--  SIGNUP DATE COLUMN -->
+        <ng-container matColumnDef="signupDate">
+            <th mat-header-cell *matHeaderCellDef>Signup Date</th>
+            <td mat-cell *matCellDef="let element">
+                {{element.createdAt | date: 'MMMM dd, y , hh:mm:ss a'}}
+            </td>
+        </ng-container>
+
+        <!--  STRATEGY COLUMN -->
+        <ng-container matColumnDef="strategy">
+            <th mat-header-cell *matHeaderCellDef>Strategy <br>(<span style="color: green;">Active</span> / <span
+                    style="color: #687888;">All</span>) </th>
+            <td mat-cell *matCellDef="let element">
+                <span matTooltip="Active Strategy" class="pointer" (click)="goToActiveStrategy(element)"
+                    style="margin-left: 10px;"
+                    [ngStyle]="{'color': element.activeBot > 0 ? 'green' : '#687888'}">{{element.activeBot ||
+                    "0"}}</span> /
+                <span matTooltip="All Strategy" class="pointer"
+                    (click)="goToInActiveStrategy(element)">{{element.activeBot + element.inActiveBot ||
+                    "0"}}</span>
+            </td>
+        </ng-container>
+
+           <!-- LOGGER -->
+           <ng-container matColumnDef="logger">
+            <th mat-header-cell *matHeaderCellDef>Logger </th>
+            <td mat-cell *matCellDef="let element">
+                <!-- <mat-icon matTooltip="Revenue" class="pointer"> monetization_on</mat-icon> -->
+                <mat-icon matTooltip="Logger Info" class="pointer" (click)="getLogger(element)">info</mat-icon>
+            </td>
+        </ng-container>
+
+             <!-- REFEERALS -->
+             <ng-container matColumnDef="referral">
+                <th mat-header-cell *matHeaderCellDef>Referrals </th>
+                <td mat-cell *matCellDef="let element">
+                    <!-- <mat-icon matTooltip="Revenue" class="pointer"> monetization_on</mat-icon> -->
+                    <mat-icon matTooltip="Referrals" class="pointer" (click)="referral(element)">assignment</mat-icon>
+              </td>
+            </ng-container>
+
+        <!-- ACTION COLUMN -->
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action </th>
+            <td mat-cell *matCellDef="let element">
+                <!-- <mat-icon matTooltip="Revenue" class="pointer"> monetization_on</mat-icon> -->
+                <mat-icon matTooltip="Wallet Details" class="pointer success"
+                    (click)="walletDetails(element)">account_balance_wallet
+                </mat-icon>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="cursor-pointer"></tr>
+
+        <!-- ROW SHOWS WHEN THERE IS NO MATCHING DATA -->
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="5" class="pad-16" style="text-align: center;">No data matching the filter
+            </td>
+        </tr>
+
+    </table>
+
+    <!-- PAGINATION -->
+    <mat-paginator [length]="totalLength" class="pagination" [pageSizeOptions]="[15, 25, 50, 75, 100]" pageSize="15"
+        (page)="pageChange($event)">
+    </mat-paginator>
+
+
+
+
+</div>

@@ -1,0 +1,31 @@
+<div class="add-column">
+    <div class="toolbar">
+        <mat-toolbar>
+            <!-- <H1 class="addColoum"><B></B></H1> -->
+            <span class="addColoum"><b>Add Columns</b></span>
+            <!-- <div class="spacer"></div> -->
+            <button mat-icon-button (click)="close()" class="close">
+                <mat-icon >close</mat-icon>
+            </button>
+        </mat-toolbar>
+    </div>
+
+    <div class="pad-8 margin-top-bottom-16"> Select columns to appear in table</div>
+
+    <div class="column-list column-container">
+        <div *ngFor="let column of data; let i = index" class="pad-16 margin-top-bottom-8">
+            <mat-checkbox [(ngModel)]="data[i].checked" [disabled]="!column.optional">
+                {{displayKey(column.key)}}
+            </mat-checkbox>
+        </div>
+    </div>
+
+    <div class="spacer"></div>
+
+
+    <div class="btn margin-top-bottom-16 pad-16">
+        <button mat-raised-button color="primary" (click)="updateColumns()">
+            <mat-icon>view_column</mat-icon> Add Columns
+        </button>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+.main_container {
+    padding: 0px 10px;
+}
+
+.back_arrow:hover {
+    color: #1e88e5;
+    cursor: pointer;
+}
+.usdt {
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.user_details {
+    width: 100%;
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 8px;
+    border-radius: 4px;
+
+    .detail {
+        margin-right: 10px;
+        background-color: #fff;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 5px;
+
+        text-align: center;
+        padding: 25px;
+        border-radius: 4px;
+
+    }
+}
+
+.para_value {
+    font-size: 35px;
+    font-weight: 600;
+    margin: 0px;
+    color: rgba(51, 71, 91, 1);
+}
+
+.para_heading {
+    color: #687888;
+    font-size: 17px;
+    font-weight: 500;
+    margin: 0px;
+}

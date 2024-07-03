@@ -1,0 +1,50 @@
+<!-- NGX LOADER -->
+<div class="ngxLoader" *ngIf="showLoader">
+    <ngx-ui-loader [hasProgressBar]="false"></ngx-ui-loader>
+</div>
+
+  <div class="main_container">
+
+  <div class="flex pad-8 header">
+
+    <!-- HEADING -->
+    <p class="heading">Banner </p>
+    <div class="spacer"></div>
+
+</div>
+
+
+<div class="card">
+    <mat-card appearance="outlined" style="width: 500px; height: 350px; display: flex; flex-direction: column; align-items: center;">
+      <h1 class="heading">Upload Image</h1>
+      <form [formGroup]="form" style="width: 100%; max-width: 400px;">
+        <div class="file-input">
+          <!-- <label for="fileUpload" class="file-label">Image Upload</label> -->
+          <input type="file" id="fileUpload" (change)="onFileSelected($event)" required>
+          <mat-error *ngIf="!file">Image file is required</mat-error>
+        </div>
+  
+        <mat-form-field appearance="outline" class="input">
+          <mat-label>Text</mat-label>
+          <input matInput formControlName="text">
+        </mat-form-field>
+  
+        <button style="background-color: #1e88e5; color: white; width: 100%; max-width: 400px; margin-top: 20px;"
+                (click)="upload()" mat-flat-button [disabled]="!form.valid || !file" >Upload</button>
+      </form>
+    </mat-card>
+  </div>
+  
+
+  <!-- <div class="card">
+    <mat-card appearance="outlined" style="width: 1000px;"> -->
+<div *ngFor="let banner of data" >
+      <li><strong>ImageLink: </strong> <a href={{banner.imageLink}}>{{banner.imageLink}}</a></li>
+  </div>
+
+    <!-- </mat-card>
+  </div> -->
+
+  </div>
+
+

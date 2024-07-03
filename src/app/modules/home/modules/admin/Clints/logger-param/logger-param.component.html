@@ -1,0 +1,17 @@
+
+<div class="toolbar">
+  <mat-toolbar class="toolbar">
+    <span *ngIf="Params" style="text-transform: capitalize;">Param Details</span>
+    <span *ngIf="!Params" style="text-transform: capitalize;">Activity Details</span>
+    <div class="spacer"></div>
+    <mat-icon (click)="close()" class="pointer" matTooltip="Close">close</mat-icon>
+  </mat-toolbar>
+</div>  
+
+<ng-container>
+  <div *ngFor="let pair of keyValuePairs">
+    <ng-container *ngIf="pair.key !== 'userId' && pair.value">
+      <div class="key-value-pair">{{ pair.key }}: {{ pair.value }}</div>
+    </ng-container>
+  </div>
+</ng-container>
