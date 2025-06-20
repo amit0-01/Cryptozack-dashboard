@@ -1,9 +1,19 @@
 {
-    "rewrites": [
-      { "source": "/(.*)", "destination": "/index.html" }
-    ],
+    "version": 2,
     "builds": [
-      { "src": "angular.json", "use": "@vercel/static-build", "config": { "distDir": "dist/crypto-project" } }
+      {
+        "src": "package.json",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "dist/crypto-project"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/index.html"
+      }
     ]
   }
   
